@@ -39,31 +39,37 @@ export function PostProvider({ children }) {
     }, [post?.comments]);
 
     console.log(post) // console.log returns 2 objects
-    console.log(commentsByParentId)// console.log returns 2 objects
+    console.log(post.comments)// console.log returns 2 objects
     
 
     function getReplies(parent_id) {
         return commentsByParentId[parent_id];
     }
 
-    
-    // Render the context provider with the current post and root comments
+     //function rComments () {
+       // return commentsByParentId[null]
+   // }
 
+   // console.log({rComments})
+    // Render the context provider with the current post and root comment and child comments
+ 
     return (
         <Context.Provider value={{
             post: { id, ...post },
-            rootComments: commentsByParentId[null],
+            rComments: commentsByParentId[null],
             getReplies,
 
             
               
-        }}>
-            {loading ? (<h1>Loading...</h1>) : error ? (<h1 className="error-msg">{error}</h1>) : (children)}
+        }
+        }>
+          {loading ? (<h1>Loading...</h1>) : error ? (<h1 className="error-msg">{error}</h1>) : (children)}
         </Context.Provider>
+        
+       
     );
     
    
 }
-
-
+ 
 

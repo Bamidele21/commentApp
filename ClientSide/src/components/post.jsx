@@ -2,9 +2,9 @@ import { usePost } from "../contexts/usePost";
 import { CommentList } from "./CommentList";
 
 export function Post() {
-    const { post, rootCommments } = usePost();
+    const { post, rCommments } = usePost();
     console.log(post); // returns object with 2 arrays 
-    console.log(rootCommments);// rootComments return undefined in post.jsx
+    console.log(rCommments);// rootComments return undefined in post.jsx
     
     
     return (
@@ -13,8 +13,8 @@ export function Post() {
         <article>{post.body}</article>
         <h3> Comments</h3>
         <section>
-            {rootCommments != null && rootCommments.length > 0 && (
-                <div><CommentList/></div>
+            {rCommments != null && rCommments.length > 0 && (
+                <div><CommentList comments={rCommments}/></div>
                  )}
                  
         </section>
